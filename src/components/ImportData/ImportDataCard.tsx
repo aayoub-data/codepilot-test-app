@@ -1,34 +1,33 @@
-'use client'
-
-import React from 'react'
+import React from 'react';
+import styles from './ImportDataCard.module.css';
 
 export interface ImportDataCardProps {
-  title: string
-  description: string
-  href: string
-  linkText?: string
+  title: string;
+  description: string;
+  href: string;
+  linkLabel: string;
 }
 
-export function ImportDataCard({
+const ImportDataCard: React.FC<ImportDataCardProps> = ({
   title,
   description,
   href,
-  linkText = 'Learn more',
-}: ImportDataCardProps): React.JSX.Element {
+  linkLabel,
+}) => {
   return (
-    <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
-      <h3 className="mb-2 text-base font-semibold text-card-foreground">{title}</h3>
-      <p className="mb-4 text-sm text-muted-foreground">{description}</p>
+    <div className={styles.card}>
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.description}>{description}</p>
       <a
+        className={styles.link}
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm font-medium text-primary underline-offset-4 hover:underline"
       >
-        {linkText}
+        {linkLabel}
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default ImportDataCard
+export default ImportDataCard;
