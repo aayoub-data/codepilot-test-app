@@ -1,0 +1,148 @@
+/* ImportPage CSS Module
+ * Responsive layout for the two-section import page design.
+ * Supports viewports from 320px up to desktop widths.
+ */
+
+/* ─── Container ─────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* ─── Hero ───────────────────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 2.5rem 0 2rem;
+}
+
+.hero h1,
+.hero p {
+  margin: 0;
+  max-width: 640px;
+}
+
+/* ─── Section ────────────────────────────────────────────────────────────── */
+.section {
+  width: 100%;
+  margin-bottom: 2.5rem;
+  box-sizing: border-box;
+}
+
+/* ─── Section Title ──────────────────────────────────────────────────────── */
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Card Grid ──────────────────────────────────────────────────────────── */
+.cardGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cardGrid > * {
+  flex: 1 1 calc(33.333% - 1rem);
+  min-width: 220px;
+  box-sizing: border-box;
+}
+
+/* ─── Contact Bar ────────────────────────────────────────────────────────── */
+.contactBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+  margin-top: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ─── Desktop (≥ 1024px) ─────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .hero {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .cardGrid > * {
+    flex: 1 1 calc(33.333% - 1rem);
+  }
+}
+
+/* ─── Tablet / narrow desktop (≤ 768px) ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero {
+    padding: 1.75rem 0 1.5rem;
+  }
+
+  .cardGrid {
+    gap: 0.75rem;
+  }
+
+  .cardGrid > * {
+    flex: 1 1 calc(50% - 0.75rem);
+    min-width: 160px;
+  }
+
+  .contactBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ─── Tiny mobile (≤ 320px) ─────────────────────────────────────────────── */
+@media (max-width: 320px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .hero {
+    padding: 1.25rem 0 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+  }
+
+  .cardGrid {
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .cardGrid > * {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .contactBar {
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
