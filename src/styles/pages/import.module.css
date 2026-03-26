@@ -1,148 +1,234 @@
-/* ImportPage CSS Module
- * Responsive layout for the two-section import page design.
- * Supports viewports from 320px up to desktop widths.
- */
+/* =========================================================
+   Import page — responsive CSS module
+   Breakpoints: 320px (mobile base), 768px (tablet), 1024px (desktop)
+   ========================================================= */
 
-/* ─── Container ─────────────────────────────────────────────────────────── */
+/* ---------------------------------------------------------
+   Container
+   Fluid by default; max-width caps on larger viewports.
+   --------------------------------------------------------- */
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
   box-sizing: border-box;
-  overflow-x: hidden;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
-/* ─── Hero ───────────────────────────────────────────────────────────────── */
-.hero {
+/* ---------------------------------------------------------
+   Page heading
+   --------------------------------------------------------- */
+.heading {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 1.5rem;
+  color: var(--color-text-primary, #111827);
+}
+
+/* ---------------------------------------------------------
+   Pathway section wrapper
+   --------------------------------------------------------- */
+.section {
+  margin-bottom: 2rem;
+}
+
+.section:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------
+   Section title
+   --------------------------------------------------------- */
+.sectionTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary, #6b7280);
+  margin: 0 0 0.75rem;
+}
+
+/* ---------------------------------------------------------
+   Link card
+   Full-width tap target on mobile; sits in a column grid
+   on wider viewports.
+   --------------------------------------------------------- */
+.linkCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.875rem 1rem;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  margin-bottom: 0.625rem;
+}
+
+.linkCard:last-child {
+  margin-bottom: 0;
+}
+
+.linkCard:hover,
+.linkCard:focus-visible {
+  border-color: var(--color-primary, #6366f1);
+  box-shadow: 0 0 0 3px var(--color-primary-alpha, rgba(99, 102, 241, 0.15));
+  outline: none;
+}
+
+/* ---------------------------------------------------------
+   Link card — title
+   --------------------------------------------------------- */
+.linkTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #111827);
+  line-height: 1.4;
+}
+
+/* ---------------------------------------------------------
+   Link card — description
+   --------------------------------------------------------- */
+.linkDescription {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary, #6b7280);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   Contact support affordance
+   --------------------------------------------------------- */
+.contactWrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
-  padding: 2.5rem 0 2rem;
-}
-
-.hero h1,
-.hero p {
-  margin: 0;
-  max-width: 640px;
-}
-
-/* ─── Section ────────────────────────────────────────────────────────────── */
-.section {
-  width: 100%;
-  margin-bottom: 2.5rem;
-  box-sizing: border-box;
-}
-
-/* ─── Section Title ──────────────────────────────────────────────────────── */
-.sectionTitle {
-  font-size: 1.125rem;
-  font-weight: 600;
-  margin: 0 0 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* ─── Card Grid ──────────────────────────────────────────────────────────── */
-.cardGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.cardGrid > * {
-  flex: 1 1 calc(33.333% - 1rem);
-  min-width: 220px;
-  box-sizing: border-box;
-}
-
-/* ─── Contact Bar ────────────────────────────────────────────────────────── */
-.contactBar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.03);
-  margin-top: 1rem;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--color-surface-muted, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #6b7280);
   box-sizing: border-box;
   width: 100%;
 }
 
-/* ─── Desktop (≥ 1024px) ─────────────────────────────────────────────────── */
-@media (min-width: 1024px) {
+/* =========================================================
+   Breakpoint: 320px  (explicit mobile floor)
+   Ensures nothing collapses below the minimum viewport.
+   ========================================================= */
+@media (min-width: 320px) {
   .container {
-    padding: 0 2rem;
+    padding: 1rem;
   }
 
-  .hero {
-    padding: 3rem 0 2.5rem;
+  .heading {
+    font-size: 1.375rem;
   }
 
-  .cardGrid > * {
-    flex: 1 1 calc(33.333% - 1rem);
+  .linkCard {
+    /* Guarantee the card never forces horizontal overflow */
+    min-width: 0;
   }
 }
 
-/* ─── Tablet / narrow desktop (≤ 768px) ─────────────────────────────────── */
-@media (max-width: 768px) {
+/* =========================================================
+   Breakpoint: 768px  (tablet)
+   ========================================================= */
+@media (min-width: 768px) {
   .container {
-    padding: 0 1rem;
+    padding: 2rem 1.5rem;
+    max-width: 48rem;
   }
 
-  .hero {
-    padding: 1.75rem 0 1.5rem;
+  .heading {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
   }
 
-  .cardGrid {
-    gap: 0.75rem;
-  }
-
-  .cardGrid > * {
-    flex: 1 1 calc(50% - 0.75rem);
-    min-width: 160px;
-  }
-
-  .contactBar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ─── Tiny mobile (≤ 320px) ─────────────────────────────────────────────── */
-@media (max-width: 320px) {
-  .container {
-    padding: 0 0.75rem;
-  }
-
-  .hero {
-    padding: 1.25rem 0 1rem;
+  .section {
+    margin-bottom: 2.5rem;
   }
 
   .sectionTitle {
     font-size: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .cardGrid {
-    flex-direction: column;
-    gap: 0.625rem;
+  /* On tablet+, cards sit side-by-side in a two-column grid */
+  .section > .linkCard {
+    display: inline-flex;
   }
 
-  .cardGrid > * {
-    flex: 1 1 100%;
-    min-width: 0;
-    width: 100%;
+  /* Two-column grid for link cards within a section */
+  .section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    align-items: start;
   }
 
-  .contactBar {
-    padding: 0.75rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+  /* Section title spans full width inside the grid */
+  .sectionTitle {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .linkCard {
+    margin-bottom: 0;
+    height: 100%;
+  }
+
+  .contactWrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* =========================================================
+   Breakpoint: 1024px  (desktop)
+   ========================================================= */
+@media (min-width: 1024px) {
+  .container {
+    padding: 2.5rem 2rem;
+    max-width: 64rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  /* Three-column grid for link cards on desktop */
+  .section {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.0625rem;
+  }
+
+  .linkCard {
+    padding: 1.125rem 1.25rem;
+  }
+
+  .linkTitle {
+    font-size: 1rem;
+  }
+
+  .linkDescription {
+    font-size: 0.875rem;
+  }
+
+  .contactWrapper {
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
   }
 }
